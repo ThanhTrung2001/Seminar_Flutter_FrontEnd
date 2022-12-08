@@ -1,1 +1,2 @@
-# Portfolio by HTML, CSS & JS
+# Flutter UI for Seminar Project
+
