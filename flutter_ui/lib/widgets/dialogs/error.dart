@@ -22,31 +22,39 @@ class _ErrorDialogState extends State<ErrorDialog> {
       child: Container(
         height: 200.h,
         width: 500.w,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 216, 56, 56),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(5, 5), // Shadow position
+              ),
+            ],
             color: Colors.white,
-            border:
-                Border.all(color: Color.fromARGB(255, 207, 19, 19), width: 5),
-            borderRadius: const BorderRadius.all(Radius.circular(20.0))),
+            borderRadius: BorderRadius.all(Radius.circular(15.0))),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 30.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'ERROR',
                 style: TextStyle(
-                  fontSize: 30.sp,
+                  fontSize: 50.sp,
+                  fontFamily: 'Rubik',
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 173, 20, 20),
+                  color: Color.fromARGB(255, 202, 39, 39),
                 ),
               ),
               SizedBox(
                 height: 20.h,
               ),
               Text(
-                'Something went wrong...',
+                'Something wrong!!!',
                 style: TextStyle(
                   fontSize: 20.sp,
+                  fontFamily: 'Pacifico',
                   fontWeight: FontWeight.normal,
                   color: Colors.black,
                 ),

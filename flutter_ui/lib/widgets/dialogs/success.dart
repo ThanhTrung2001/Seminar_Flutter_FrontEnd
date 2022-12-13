@@ -11,6 +11,14 @@ class SuccessDialog extends StatefulWidget {
 
 class _SuccessDialogState extends State<SuccessDialog> {
   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      Navigator.of(context).pushNamed('/profile');
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Dialog(
@@ -22,20 +30,27 @@ class _SuccessDialogState extends State<SuccessDialog> {
       child: Container(
         height: 200.h,
         width: 500.w,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color.fromARGB(255, 86, 212, 124),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(5, 5), // Shadow position
+              ),
+            ],
             color: Colors.white,
-            border: Border.all(
-                color: const Color.fromARGB(255, 0, 252, 55), width: 5),
-            borderRadius: const BorderRadius.all(Radius.circular(20.0))),
+            borderRadius: BorderRadius.all(Radius.circular(15.0))),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 30.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'SUCCESS',
                 style: TextStyle(
-                  fontSize: 30.sp,
+                  fontSize: 50.sp,
+                  fontFamily: 'Rubik',
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 27, 128, 30),
                 ),
@@ -47,6 +62,7 @@ class _SuccessDialogState extends State<SuccessDialog> {
                 'Move to ProfilePage!',
                 style: TextStyle(
                   fontSize: 20.sp,
+                  fontFamily: 'Pacifico',
                   fontWeight: FontWeight.normal,
                   color: Colors.black,
                 ),

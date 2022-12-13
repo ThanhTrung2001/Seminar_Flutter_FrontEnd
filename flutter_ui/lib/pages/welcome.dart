@@ -14,10 +14,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool hover = false;
   final identifierController = TextEditingController();
+  final passController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+  bool hidePass = true;
   // @override
   // void initState() {
   //   Future.delayed(
@@ -41,45 +41,66 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(150.0),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 200.w),
+          padding: EdgeInsets.symmetric(horizontal: 100.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 15.h),
+                padding: EdgeInsets.symmetric(vertical: 20.h),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.person_add_alt_1_rounded,
-                        size: 70 * getPercent(size), color: Colors.white),
-                    SizedBox(
-                      width: 15.w,
+                    Image(
+                      image: const AssetImage('icons/team.png'),
+                      width: 100.w,
+                      height: 100.w,
                     ),
-                    Text(
-                      "Citizen's Viewer",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40.sp,
-                          color: Colors.white),
+                    SizedBox(
+                      width: 30.w,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "CITIZEN CHECKING PAGE",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40.sp,
+                              fontFamily: 'Rubik',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          'C  H  E  C  K  I  N  G   -   -   -  I  N  F  O  R  M  A  T  I  O  N',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp,
+                              fontFamily: 'Rubik',
+                              color: Colors.white),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25.sp,
-                          color: Colors.blue),
-                    ),
-                  )
-                ],
-              )
+              // Row(
+              //   children: [
+              //     InkWell(
+              //       onTap: () {},
+              //       child: Text(
+              //         'Sign Up',
+              //         style: TextStyle(
+              //             fontWeight: FontWeight.bold,
+              //             fontSize: 25.sp,
+              //             color: Colors.blue),
+              //       ),
+              //     )
+              //   ],
+              // )
             ],
           ),
         ),
@@ -91,32 +112,89 @@ class _LoginPageState extends State<LoginPage> {
         width: size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/background.jpg"),
+            image: AssetImage("assets/images/pikrepo.jpg"),
             fit: BoxFit.cover,
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 200.w),
+          padding: EdgeInsets.symmetric(horizontal: 100.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: (size.width > 1000)
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.center,
                 children: [
+                  (size.width > 1000)
+                      ? Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'CITIZEN',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80.sp,
+                                    fontFamily: 'Rubik',
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Text(
+                                'MANAGEMENT',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80.sp,
+                                    fontFamily: 'Rubik',
+                                    color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Text(
+                                'INFORMATION LOGIN',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 80.sp,
+                                    fontFamily: 'Rubik',
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Container(),
+                  SizedBox(
+                    width: 80.w,
+                  ),
                   LoginForm(
                     identifierController: identifierController,
+                    passController: passController,
+                    hidePass: hidePass,
+                    showPasswordAction: () {
+                      setState(() {
+                        hidePass = !hidePass;
+                      });
+                    },
                     submit: () {
-                      Future.delayed(
-                        const Duration(seconds: 3),
-                        () {
-                          showDialog(
-                              context: context,
-                              builder: (_) {
-                                return SuccessDialog(press: () {});
-                                // return ErrorDialog(press: () {});
-                              });
-                        },
-                      );
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return SuccessDialog(press: () {});
+                            // return ErrorDialog(press: () {});
+                          });
+                      // Future.delayed(
+                      //   const Duration(seconds: 3),
+                      //   () {
+                      //     showDialog(
+                      //         context: context,
+                      //         builder: (_) {
+                      //           return SuccessDialog(press: () {});
+                      //           // return ErrorDialog(press: () {});
+                      //         });
+                      //   },
+                      // );
                     },
                   ),
                 ],

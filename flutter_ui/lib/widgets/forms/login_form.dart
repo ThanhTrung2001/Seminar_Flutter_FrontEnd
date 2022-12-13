@@ -8,28 +8,37 @@ import 'package:flutter_ui/widgets/dialogs/success.dart';
 class LoginForm extends StatefulWidget {
   VoidCallback submit;
   TextEditingController identifierController;
+  TextEditingController passController;
+  bool hidePass = true;
+  VoidCallback showPasswordAction;
   LoginForm(
-      {required this.identifierController, required this.submit, super.key});
+      {required this.identifierController,
+      required this.passController,
+      required this.hidePass,
+      required this.showPasswordAction,
+      required this.submit,
+      super.key});
 
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.5,
-      height: size.height * 0.6,
+      width: size.width * 0.4,
+      height: (size.width > 1000) ? 700.h : 430.h,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           boxShadow: const [
             BoxShadow(
-              color: Color.fromARGB(255, 0, 0, 0),
+              color: Colors.blue,
               spreadRadius: 5,
-              blurRadius: 4,
-              offset: Offset(0, 3), // Shadow position
+              blurRadius: 1,
+              offset: Offset(12, 12), // Shadow position
             ),
           ],
           color: Colors.white),
@@ -42,28 +51,34 @@ class _LoginFormState extends State<LoginForm> {
             //   height: 80.h,
             // ),
             Text(
-              'CHÀO MỪNG',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36.sp),
+              'WELCOME',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Rubik',
+                  fontSize: 36.sp),
             ),
             SizedBox(
-              height: 40.h,
+              height: 50.h,
             ),
             Text(
               "Nhập số căn cước công dân của bạn: ",
-              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 24.sp),
+              style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontFamily: 'Pacifico',
+                  fontSize: 24.sp),
             ),
             SizedBox(
-              height: 20.h,
+              height: 35.h,
             ),
             Container(
               alignment: Alignment.center,
               height: size.height * 0.062,
               width: size.width * 0.3,
               decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(15.0),
+                  color: Color.fromARGB(0, 155, 155, 155),
+                  borderRadius: BorderRadius.circular(10.0),
                   border: Border.all(
-                    color: Colors.black,
+                    color: Color.fromARGB(255, 170, 170, 170),
                     width: 2,
                   )),
               child: TextField(
@@ -84,27 +99,70 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: 15.h,
+            ),
+            Container(
+              alignment: Alignment.center,
+              height: size.height * 0.062,
+              width: size.width * 0.3,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(0, 155, 155, 155),
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: Border.all(
+                    color: Color.fromARGB(255, 170, 170, 170),
+                    width: 2,
+                  )),
+              child: TextField(
+                obscureText: widget.hidePass,
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                controller: widget.passController,
+                style: TextStyle(
+                  fontSize: 32.sp,
+                  color: Colors.black,
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Password',
+                  hintStyle: TextStyle(
+                      color: Colors.black.withOpacity(0.5), fontSize: 30.sp),
+                  isCollapsed: true,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 35.h,
             ),
             TextButton(
               onPressed: widget.submit,
+              onHover: (value) {
+                setState(() {
+                  isHover = !isHover;
+                });
+              },
               style: ButtonStyle(
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                  shadowColor: MaterialStateProperty.all<Color>(
+                      Color.fromARGB(255, 0, 0, 0)),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      (isHover == false)
+                          ? Color.fromARGB(255, 105, 185, 250)
+                          : Colors.black),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: const BorderSide(color: Colors.black)))),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.125, vertical: 20.h),
                 child: Text(
                   'LOGIN',
                   style: TextStyle(
                     fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    fontFamily: 'Rubik',
+                    color: (isHover == false) ? Colors.black : Colors.white,
                   ),
                 ),
               ),
