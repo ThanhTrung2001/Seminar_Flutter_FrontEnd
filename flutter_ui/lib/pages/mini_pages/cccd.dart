@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/config/constant.dart';
+import 'package:flutter_ui/services/api.dart';
 import 'package:flutter_ui/widgets/navbar.dart';
 
 class CCCDPage extends StatefulWidget {
@@ -13,6 +14,12 @@ class CCCDPage extends StatefulWidget {
 }
 
 class _CCCDPageState extends State<CCCDPage> {
+  @override
+  void initState() {
+    getCCCDInformationByToken();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

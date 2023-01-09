@@ -1,11 +1,14 @@
 import "dart:convert";
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_ui/config/constant.dart';
+import 'package:flutter_ui/models/bhyt.dart';
+import 'package:flutter_ui/models/cccd.dart';
+import 'package:flutter_ui/models/gplx.dart';
 import 'package:flutter_ui/models/token.dart';
 import 'package:http/http.dart' as http;
 
 var status = 0;
-
+CCCD cccd = new CCCD();
 Map<String, String> headers = {
   'Content-Type': 'application/json',
 };
@@ -48,6 +51,76 @@ Future<bool> submitImage(id) async {
     return false;
   } on Exception catch (e) {
     debugPrint(e.toString());
+    return false;
+  }
+}
+
+Future<bool> getCCCDInformationByToken() async {
+  try {
+    var response = await http.get(
+      Uri.http('localhost:5000', '/api/Infomation/GetCitizenIdentityByToken'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    var checking = jsonDecode(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      status = 200;
+      cccd = CCCD.fromJson(checking);
+      print(cccd);
+    }
+    return false;
+  } on Exception catch (e) {
+    print(e);
+    return false;
+  }
+}
+
+Future<bool> getGPLXInformationByToken() async {
+  try {
+    var response = await http.get(
+      Uri.http('localhost:5000', '/api/Infomation/GetDrivingLicenseByToken'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    var checking = jsonDecode(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      status = 200;
+      GPLX gplx = GPLX.fromJson(checking);
+    }
+    return false;
+  } on Exception catch (e) {
+    print(e);
+    return false;
+  }
+}
+
+Future<bool> getBHYTInformationByToken() async {
+  try {
+    var response = await http.get(
+      Uri.http('localhost:5000', '/api/Infomation/GetHealthInsuranceByToken'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    var checking = jsonDecode(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      status = 200;
+      BHYT bhyt = BHYT.fromJson(checking);
+    }
+    return false;
+  } on Exception catch (e) {
+    print(e);
     return false;
   }
 }

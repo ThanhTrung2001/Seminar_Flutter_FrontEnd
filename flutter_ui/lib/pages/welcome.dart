@@ -187,6 +187,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (await submitLogin(
                               identifierController.text, passController.text) ==
                           true) {
+                        getCCCDInformationByToken();
                         showDialog(
                             context: context,
                             builder: (_) {
