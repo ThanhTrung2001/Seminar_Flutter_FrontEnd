@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 
 var status = 0;
 CCCD cccd = new CCCD();
+GPLX gplx = new GPLX();
+BHYT bhyt = new BHYT();
 Map<String, String> headers = {
   'Content-Type': 'application/json',
 };
@@ -16,7 +18,7 @@ Map<String, String> headers = {
 Future<bool> submitLogin(userName, password) async {
   try {
     var response = await http.post(
-        Uri.http('localhost:5000', '/api/User/Login'),
+        Uri.http('localhost:80', 'infomation/User/Login'),
         headers: headers,
         body: jsonEncode({"userName": userName, "password": password}));
     var checking = jsonDecode(response.body);
@@ -58,7 +60,8 @@ Future<bool> submitImage(id) async {
 Future<bool> getCCCDInformationByToken() async {
   try {
     var response = await http.get(
-      Uri.http('localhost:5000', '/api/Infomation/GetCitizenIdentityByToken'),
+      Uri.http(
+          'localhost:80', 'infomation/Infomation/GetCitizenIdentityByToken'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -82,7 +85,8 @@ Future<bool> getCCCDInformationByToken() async {
 Future<bool> getGPLXInformationByToken() async {
   try {
     var response = await http.get(
-      Uri.http('localhost:5000', '/api/Infomation/GetDrivingLicenseByToken'),
+      Uri.http(
+          'localhost:80', 'infomation/Infomation/GetDrivingLicenseByToken'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -93,7 +97,7 @@ Future<bool> getGPLXInformationByToken() async {
     print(response.statusCode);
     if (response.statusCode == 200) {
       status = 200;
-      GPLX gplx = GPLX.fromJson(checking);
+      gplx = GPLX.fromJson(checking);
     }
     return false;
   } on Exception catch (e) {
@@ -105,7 +109,8 @@ Future<bool> getGPLXInformationByToken() async {
 Future<bool> getBHYTInformationByToken() async {
   try {
     var response = await http.get(
-      Uri.http('localhost:5000', '/api/Infomation/GetHealthInsuranceByToken'),
+      Uri.http(
+          'localhost:80', 'infomation/Infomation/GetHealthInsuranceByToken'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -116,7 +121,7 @@ Future<bool> getBHYTInformationByToken() async {
     print(response.statusCode);
     if (response.statusCode == 200) {
       status = 200;
-      BHYT bhyt = BHYT.fromJson(checking);
+      bhyt = BHYT.fromJson(checking);
     }
     return false;
   } on Exception catch (e) {

@@ -92,7 +92,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -103,7 +102,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -114,7 +112,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -125,7 +122,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -136,7 +132,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -147,7 +142,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -158,7 +152,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -169,7 +162,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -180,7 +172,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -191,7 +182,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -202,7 +192,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -213,7 +202,6 @@ class _CCCDPageState extends State<CCCDPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -225,132 +213,120 @@ class _CCCDPageState extends State<CCCDPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          cccdID,
+                          cccd.cccdId as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          fullName,
+                          cccd.fullName as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoB,
+                          cccd.dateOfBirth as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          gender,
+                          (cccd.sex == '1') ? 'Male' : 'Female',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          Nationality,
+                          cccd.nationality as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfOrigin,
+                          cccd.placeOfOrigin as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfResidence,
+                          cccd.placeOfResidence as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoExpire,
+                          cccd.dateOfExpiry as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PersonalIdentification,
+                          cccd.personalIdentification as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          IssueDate,
+                          cccd.issueDate as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          GrantorName,
+                          cccd.grantorName as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          TitleOfGrantor,
+                          cccd.titleOfGrantor as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
