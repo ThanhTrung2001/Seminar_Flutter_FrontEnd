@@ -1,24 +1,64 @@
 class GPLX {
-  String id;
-  String fullName;
-  String nationality;
-  String address;
-  String gplxClass;
-  String classification, grantorName, titleOfGrantor;
-  DateTime doB, doIssue, expires, beginningDate;
-  String userId;
+  String? idCard;
+  String? fullName;
+  String? dateOfBirth;
+  String? nationality;
+  String? address;
+  String? placeOfIssue;
+  String? dateOfIssue;
+  String? classType;
+  String? expires;
+  String? beginningDate;
+  String? classificationOfMotorVehicles;
+  String? grantorName;
+  String? titleOfGrantor;
+
   GPLX(
-      this.id,
+      {this.idCard,
       this.fullName,
-      this.doB,
+      this.dateOfBirth,
       this.nationality,
       this.address,
-      this.doIssue,
-      this.gplxClass,
+      this.placeOfIssue,
+      this.dateOfIssue,
+      this.classType,
       this.expires,
       this.beginningDate,
-      this.classification,
+      this.classificationOfMotorVehicles,
       this.grantorName,
-      this.titleOfGrantor,
-      this.userId);
+      this.titleOfGrantor});
+
+  GPLX.fromJson(Map<String, dynamic> json) {
+    idCard = json['idCard'];
+    fullName = json['fullName'];
+    dateOfBirth = json['dateOfBirth'];
+    nationality = json['nationality'];
+    address = json['address'];
+    placeOfIssue = json['placeOfIssue'];
+    dateOfIssue = json['dateOfIssue'];
+    classType = json['class'];
+    expires = json['expires'];
+    beginningDate = json['beginningDate'];
+    classificationOfMotorVehicles = json['classificationOfMotorVehicles'];
+    grantorName = json['grantorName'];
+    titleOfGrantor = json['titleOfGrantor'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['idCard'] = this.idCard;
+    data['fullName'] = this.fullName;
+    data['dateOfBirth'] = this.dateOfBirth;
+    data['nationality'] = this.nationality;
+    data['address'] = this.address;
+    data['placeOfIssue'] = this.placeOfIssue;
+    data['dateOfIssue'] = this.dateOfIssue;
+    data['class'] = this.classType;
+    data['expires'] = this.expires;
+    data['beginningDate'] = this.beginningDate;
+    data['classificationOfMotorVehicles'] = this.classificationOfMotorVehicles;
+    data['grantorName'] = this.grantorName;
+    data['titleOfGrantor'] = this.titleOfGrantor;
+    return data;
+  }
 }

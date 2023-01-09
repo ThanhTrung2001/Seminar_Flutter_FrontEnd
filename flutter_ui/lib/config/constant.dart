@@ -28,3 +28,11 @@ String PersonalIdentification = 'Not ruoi';
 String IssueDate = '10/10/2010';
 String GrantorName = 'abc';
 String TitleOfGrantor = 'abc';
+
+//ip
+var infoIP = '192.168.137.1';
+// /api/User/Login
+
+var imageIP = 'localhost:80/image';
+
+String? token;

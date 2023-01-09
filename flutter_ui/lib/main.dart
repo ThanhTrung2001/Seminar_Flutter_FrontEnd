@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
                   primarySwatch: Colors.blue,
                   primaryTextTheme: const TextTheme(
                       bodyText1: TextStyle(fontFamily: 'Lobster'))),
-              initialRoute: '/cccd',
+              initialRoute: '/',
               routes: {
                 '/': (context) => const LoginPage(),
                 '/profile': (context) => const ProfilePage(),

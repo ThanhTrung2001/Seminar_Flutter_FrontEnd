@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/config/constant.dart';
+import 'package:flutter_ui/services/api.dart';
 import 'package:flutter_ui/widgets/dialogs/success.dart';
 import 'package:flutter_ui/widgets/forms/login_form.dart';
 
@@ -177,13 +178,23 @@ class _LoginPageState extends State<LoginPage> {
                         hidePass = !hidePass;
                       });
                     },
-                    submit: () {
-                      showDialog(
-                          context: context,
-                          builder: (_) {
-                            return SuccessDialog(press: () {});
-                            // return ErrorDialog(press: () {});
-                          });
+                    submit: () async {
+                      print(identifierController.text);
+                      print(passController.text);
+                      // submitImage(1);
+                      submitLogin(
+                          identifierController.text, passController.text);
+                      if (await submitLogin(
+                              identifierController.text, passController.text) ==
+                          true) {
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return SuccessDialog(press: () {});
+                              // return ErrorDialog(press: () {});
+                            });
+                      }
+
                       // Future.delayed(
                       //   const Duration(seconds: 3),
                       //   () {
