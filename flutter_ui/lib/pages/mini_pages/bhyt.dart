@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/config/constant.dart';
 import 'package:flutter_ui/widgets/navbar.dart';
+import 'package:flutter_ui/models/image.dart' as i;
 
 class BHYTPage extends StatefulWidget {
   const BHYTPage({super.key});
@@ -52,7 +53,7 @@ class _BHYTPageState extends State<BHYTPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              'https://i.imgur.com/AOZhwOx.png',
+                              i.bhytFr.imageUrl.toString(),
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -68,7 +69,7 @@ class _BHYTPageState extends State<BHYTPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              'https://i.imgur.com/AOZhwOx.png',
+                              i.bhytB.imageUrl.toString(),
                               fit: BoxFit.fill)),
                     ),
                   ],
