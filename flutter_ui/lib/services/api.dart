@@ -5,6 +5,7 @@ import 'package:flutter_ui/models/bhyt.dart';
 import 'package:flutter_ui/models/cccd.dart';
 import 'package:flutter_ui/models/gplx.dart';
 import 'package:flutter_ui/models/token.dart';
+import 'package:flutter_ui/models/image.dart' as i;
 import 'package:http/http.dart' as http;
 
 var status = 0;
@@ -39,14 +40,50 @@ Future<bool> submitLogin(userName, password) async {
   }
 }
 
-Future<bool> submitImage(id) async {
+Future<bool> submitGetAllImage() async {
   try {
-    var response = await http.get(Uri.http('localhost:5001', '/image/1'));
+    var response = await http.get(Uri.http('localhost:5000', '/image'),
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      }
+    );
     var checking = jsonDecode(response.body);
-    // print('json is  $jsonData');
-    // var checking = jsonData['token'];
-    if (response.statusCode == 201) {
-      // token = checking['access_token'];
+    if (response.statusCode == 200) {
+      if (checking['listImage'] != null) {
+        ////cach 1:
+        // i.listImage = [];
+        // checking['listImage'].forEach((v) {
+        //   i.listImage.add(i.Image.fromJson(v));
+        // });
+        ////cach 2:
+        checking['listImage'].forEach((v) {
+          print(v['type']);
+          switch (v['type']) {
+            case 'CCCD-FR':
+              i.cccdFr = i.Image.fromJson(v);
+              break;
+            case 'CCCD-B':
+              i.cccdB = i.Image.fromJson(v);
+              break;
+            case 'BHYT-FR':
+              i.bhytFr = i.Image.fromJson(v);
+              break;
+            case 'BHYT-B':
+              i.bhytB = i.Image.fromJson(v);
+              break;
+            case 'BLX-FR':
+              i.blxFr = i.Image.fromJson(v);
+              break;
+            case 'BLX-B':
+              i.blxB = i.Image.fromJson(v);
+              break;  
+            default:
+          }
+          //i.listImage.add(i.Image.fromJson(v));
+        });
+      }
       print('hello');
       return true;
     }

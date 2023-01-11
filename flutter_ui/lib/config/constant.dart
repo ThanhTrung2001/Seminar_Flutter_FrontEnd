@@ -36,3 +36,4 @@ var infoIP = '192.168.137.1';
 var imageIP = 'localhost:80/image';
 
 String? token;
+

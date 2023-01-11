@@ -181,20 +181,21 @@ class _LoginPageState extends State<LoginPage> {
                     submit: () async {
                       print(identifierController.text);
                       print(passController.text);
+                      submitGetAllImage();
                       // submitImage(1);
-                      submitLogin(
-                          identifierController.text, passController.text);
-                      if (await submitLogin(
-                              identifierController.text, passController.text) ==
-                          true) {
-                        getCCCDInformationByToken();
-                        showDialog(
-                            context: context,
-                            builder: (_) {
-                              return SuccessDialog(press: () {});
-                              // return ErrorDialog(press: () {});
-                            });
-                      }
+                      // submitLogin(
+                      //     identifierController.text, passController.text);
+                      // if (await submitLogin(
+                      //         identifierController.text, passController.text) ==
+                      //     true) {
+                      //   getCCCDInformationByToken();
+                      //   showDialog(
+                      //       context: context,
+                      //       builder: (_) {
+                      //         return SuccessDialog(press: () {});
+                      //         // return ErrorDialog(press: () {});
+                      //       });
+                      // }
 
                       // Future.delayed(
                       //   const Duration(seconds: 3),
