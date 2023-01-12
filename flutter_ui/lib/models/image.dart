@@ -26,11 +26,11 @@ class Image {
   }
 }
 
-List<Image> listImage = [];
+List<Image?> listImage = [];
 
-late Image cccdFr;
-late Image cccdB;
-late Image bhytFr;
-late Image bhytB;
-late Image blxFr;
-late Image blxB;
+Image? cccdFr;
+Image? cccdB;
+Image? bhytFr;
+Image? bhytB;
+Image? blxFr;
+Image? blxB;

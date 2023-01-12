@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/config/constant.dart';
+import 'package:flutter_ui/services/api.dart';
 import 'package:flutter_ui/widgets/navbar.dart';
 import 'package:flutter_ui/models/image.dart' as i;
 
@@ -36,7 +37,7 @@ class _GPLXPageState extends State<GPLXPage> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(100.w),
+            padding: EdgeInsets.all(80.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,7 +54,9 @@ class _GPLXPageState extends State<GPLXPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.blxFr.imageUrl.toString(),
+                              i.blxFr!.imageUrl.toString() != null
+                                  ? i.blxFr!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -69,7 +72,9 @@ class _GPLXPageState extends State<GPLXPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.blxB.imageUrl.toString(),
+                              i.blxB!.imageUrl.toString() != null
+                                  ? i.blxB!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                   ],
@@ -82,11 +87,10 @@ class _GPLXPageState extends State<GPLXPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'CCCD  :',
+                          'ID Card  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -97,7 +101,6 @@ class _GPLXPageState extends State<GPLXPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -108,18 +111,6 @@ class _GPLXPageState extends State<GPLXPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
-                              color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          'Gender  :',
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -130,88 +121,100 @@ class _GPLXPageState extends State<GPLXPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Origin Place  :',
+                          'Address  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Residence Place  :',
+                          'Place of Origin  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Expire Date  :',
+                          'Date of Issue  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Identification  :',
+                          'Class Type  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Issue Date  :',
+                          'Expire in  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Grantor Name  :',
+                          'Beginning date  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          "Grantor's Title  :",
+                          'Classify  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
-                          width: 80.w,
+                          height: 10.h,
+                        ),
+                        Text(
+                          "Grantor's Name  :",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        // SizedBox(
+                        //   width: 80.w,
+                        // ),
+                        Text(
+                          "Grantor's Title :  ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
                         ),
                       ],
                     ),
@@ -219,136 +222,131 @@ class _GPLXPageState extends State<GPLXPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          cccdID,
+                          gplx.idCard as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          fullName,
+                          gplx.fullName as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoB,
+                          gplx.dateOfBirth as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          gender,
+                          gplx.nationality as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          Nationality,
+                          gplx.address as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfOrigin,
+                          gplx.placeOfIssue as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfResidence,
+                          gplx.dateOfIssue as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoExpire,
+                          gplx.classType as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PersonalIdentification,
+                          gplx.expires as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          IssueDate,
+                          gplx.beginningDate as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          GrantorName,
+                          gplx.classificationOfMotorVehicles as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          TitleOfGrantor,
+                          gplx.grantorName as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
+                        ),
+                        Text(
+                          gplx.titleOfGrantor as String,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
                         ),
                       ],
                     ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ui/config/constant.dart';
+import 'package:flutter_ui/services/api.dart';
 import 'package:flutter_ui/widgets/navbar.dart';
 import 'package:flutter_ui/models/image.dart' as i;
 
@@ -36,7 +37,7 @@ class _BHYTPageState extends State<BHYTPage> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(100.w),
+            padding: EdgeInsets.all(80.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,7 +54,9 @@ class _BHYTPageState extends State<BHYTPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.bhytFr.imageUrl.toString(),
+                              i.bhytFr!.imageUrl.toString() != null
+                                  ? i.bhytFr!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -69,7 +72,9 @@ class _BHYTPageState extends State<BHYTPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.bhytB.imageUrl.toString(),
+                              i.bhytB!.imageUrl.toString() != null
+                                  ? i.bhytB!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                   ],
@@ -82,11 +87,10 @@ class _BHYTPageState extends State<BHYTPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'CCCD  :',
+                          'ID Card :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -97,7 +101,6 @@ class _BHYTPageState extends State<BHYTPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -108,7 +111,6 @@ class _BHYTPageState extends State<BHYTPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -119,7 +121,6 @@ class _BHYTPageState extends State<BHYTPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
@@ -130,221 +131,241 @@ class _BHYTPageState extends State<BHYTPage> {
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Origin Place  :',
+                          'Area Code  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Residence Place  :',
+                          'Address  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Expire Date  :',
+                          'First BHYT Provider  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Identification  :',
+                          'BHYTCode  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Issue Date  :',
+                          'Valid Date  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          'Grantor Name  :',
+                          'Five years date  :',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          "Grantor's Title  :",
+                          "Issue date  :",
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
-                          width: 80.w,
+                          height: 10.h,
                         ),
+                        Text(
+                          "Grantor's name  :",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          "Grantorr's Title :",
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
+                        ),
+                        // SizedBox(
+                        //   width: 80.w,
+                        // ),
                       ],
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          cccdID,
+                          bhyt.idCard as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          fullName,
+                          bhyt.fullName as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoB,
+                          bhyt.dateOfBirth as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          gender,
+                          (bhyt.sex == "1") ? "Male" : "Female",
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          Nationality,
+                          bhyt.nationality as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfOrigin,
+                          bhyt.areaCode as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PlaceOfResidence,
+                          bhyt.address as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          DoExpire,
+                          bhyt.firstInsuranceHealthCareProvider as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          PersonalIdentification,
+                          bhyt.insuranceHealthCareCode as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          IssueDate,
+                          bhyt.validDate as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          GrantorName,
+                          bhyt.fiveYearsDate as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
                               color: Colors.white),
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         Text(
-                          TitleOfGrantor,
+                          bhyt.issueDate as String,
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 20.sp,
-                              fontFamily: 'Pacifico',
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          bhyt.grantorName as String,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
+                              color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          bhyt.titleOfGrantor as String,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20.sp,
                               color: Colors.white),
                         ),
                         SizedBox(

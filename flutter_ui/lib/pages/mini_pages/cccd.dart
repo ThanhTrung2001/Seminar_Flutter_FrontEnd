@@ -17,7 +17,7 @@ class CCCDPage extends StatefulWidget {
 class _CCCDPageState extends State<CCCDPage> {
   @override
   void initState() {
-    getCCCDInformationByToken();
+    // getCCCDInformationByToken();
     super.initState();
   }
 
@@ -43,7 +43,7 @@ class _CCCDPageState extends State<CCCDPage> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(100.w),
+            padding: EdgeInsets.all(80.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -60,7 +60,9 @@ class _CCCDPageState extends State<CCCDPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.cccdFr.imageUrl.toString(),
+                              i.cccdFr!.imageUrl.toString() != null
+                                  ? i.cccdFr!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                     SizedBox(
@@ -76,7 +78,9 @@ class _CCCDPageState extends State<CCCDPage> {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(20.r),
                           child: Image.network(
-                              i.cccdB.imageUrl.toString(),
+                              i.cccdB!.imageUrl.toString() != null
+                                  ? i.cccdB!.imageUrl.toString()
+                                  : imgLink,
                               fit: BoxFit.fill)),
                     ),
                   ],
@@ -205,9 +209,9 @@ class _CCCDPageState extends State<CCCDPage> {
                               fontSize: 20.sp,
                               color: Colors.white),
                         ),
-                        SizedBox(
-                          width: 80.w,
-                        ),
+                        // SizedBox(
+                        //   width: 80.w,
+                        // ),
                       ],
                     ),
                     Column(

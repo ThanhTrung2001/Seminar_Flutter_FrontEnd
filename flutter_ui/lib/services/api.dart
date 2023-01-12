@@ -42,15 +42,14 @@ Future<bool> submitLogin(userName, password) async {
 
 Future<bool> submitGetAllImage() async {
   try {
-    var response = await http.get(Uri.http('localhost:5000', '/image'),
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      }
-    );
+    var response = await http.get(Uri.http('localhost:80', 'image'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': '$token',
+    });
     var checking = jsonDecode(response.body);
     if (response.statusCode == 200) {
+      print('successful');
       if (checking['listImage'] != null) {
         ////cach 1:
         // i.listImage = [];
@@ -63,6 +62,7 @@ Future<bool> submitGetAllImage() async {
           switch (v['type']) {
             case 'CCCD-FR':
               i.cccdFr = i.Image.fromJson(v);
+              print(i.cccdFr!.imageUrl.toString());
               break;
             case 'CCCD-B':
               i.cccdB = i.Image.fromJson(v);
@@ -78,13 +78,12 @@ Future<bool> submitGetAllImage() async {
               break;
             case 'BLX-B':
               i.blxB = i.Image.fromJson(v);
-              break;  
+              break;
             default:
           }
           //i.listImage.add(i.Image.fromJson(v));
         });
       }
-      print('hello');
       return true;
     }
     return false;

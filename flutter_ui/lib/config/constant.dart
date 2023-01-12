@@ -37,3 +37,5 @@ var imageIP = 'localhost:80/image';
 
 String? token;
 
+String imgLink =
+    "https://res.cloudinary.com/fs-app/image/upload/v1673403605/c8vdchadrjowlxnyyuce.jpg";
